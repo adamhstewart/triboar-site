@@ -52,7 +52,7 @@ echo "Removing existing files"
 rm -rf public/*
 
 echo "Building Tailwind CSS for production"
-docker-compose run --rm hugo sh -c "export NPM_CONFIG_CACHE=/tmp/.npm && cd /tmp && npm install tailwindcss@3.4.0 && cd /src && npx tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --minify"
+docker-compose run --rm hugo sh -c "export NPM_CONFIG_CACHE=/tmp/.npm && cd /tmp && npm install tailwindcss@3.4.0 && cd /src && /tmp/node_modules/.bin/tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --minify"
 
 echo "Generating Hugo site"
 docker-compose run --rm hugo hugo --minify --environment production

@@ -8,7 +8,7 @@ docker rm tailwind-watcher 2>/dev/null || true
 docker-compose build
 
 # Start Tailwind watcher in background with output
-docker-compose run -d --name tailwind-watcher hugo sh -c "export NPM_CONFIG_CACHE=/tmp/.npm && cd /tmp && npm install tailwindcss@3.4.0 && cd /src && npx tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --watch"
+docker-compose run -d --name tailwind-watcher hugo sh -c "export NPM_CONFIG_CACHE=/tmp/.npm && cd /tmp && npm install tailwindcss@3.4.0 && cd /src && /tmp/node_modules/.bin/tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --watch"
 
 # Function to show both logs
 show_logs() {
